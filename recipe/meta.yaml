@@ -24,20 +24,26 @@ requirements:
     - pip
     - setuptools_scm
     - msinttypes  # [win and py27]
+    - wheel
   run:
     - python
 
 test:
+  requires:
+    - pip
   imports:
     - ujson
+  commands:
+    - pip check
 
 about:
   home: https://github.com/ultrajson/ultrajson
   summary: Ultra fast JSON decoder and encoder written in C with Python bindings
   license: BSD-3-Clause
   license_file: LICENSE.txt
-
+  license_family: BSD
   dev_url: https://github.com/ultrajson/ultrajson
+  doc_url: https://github.com/ultrajson/ultrajson/blob/master/README.rst
 
 extra:
   recipe-maintainers:
