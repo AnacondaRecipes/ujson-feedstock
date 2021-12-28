@@ -26,7 +26,8 @@ requirements:
     - setuptools >=42
     - wheel
     - setuptools_scm
-    - toml >=3.4
+      # our latest supported version of toml is 0.10.2
+    - toml
   run:
     - python
 
