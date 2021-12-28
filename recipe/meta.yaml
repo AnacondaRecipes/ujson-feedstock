@@ -1,6 +1,6 @@
 {% set name = "ujson" %}
-{% set version = "4.0.2" %}
-{% set sha256 = "c615a9e9e378a7383b756b7e7a73c38b22aeb8967a8bfbffd4741f7ffd043c4d" %}
+{% set version = "4.2.0" %}
+{% set sha256 = "fffe509f556861c7343c6cba57ed05fe7bcf4b48a934a5b946ccb45428cf8883" %}
 
 package:
   name: {{ name|lower }}
@@ -14,6 +14,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<36]
 
 requirements:
   build:
@@ -22,14 +23,21 @@ requirements:
   host:
     - python
     - pip
+    - setuptools >=42
+    - wheel
     - setuptools_scm
-    - msinttypes  # [win and py27]
+      # our latest supported version of toml is 0.10.2
+    - toml
   run:
     - python
 
 test:
   imports:
     - ujson
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/ultrajson/ultrajson
@@ -38,6 +46,7 @@ about:
   license_file: LICENSE.txt
 
   dev_url: https://github.com/ultrajson/ultrajson
+  doc_url: https://github.com/ultrajson/ultrajson/blob/main/README.md
 
 extra:
   recipe-maintainers:
