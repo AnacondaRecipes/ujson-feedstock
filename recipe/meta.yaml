@@ -14,6 +14,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<36]
 
 requirements:
   build:
@@ -22,14 +23,20 @@ requirements:
   host:
     - python
     - pip
+    - setuptools >=42
+    - wheel
     - setuptools_scm
-    - msinttypes  # [win and py27]
+    - toml >=3.4
   run:
     - python
 
 test:
   imports:
     - ujson
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/ultrajson/ultrajson
