@@ -13,6 +13,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -22,21 +23,28 @@ requirements:
   host:
     - python
     - pip
-    - setuptools_scm
-    - msinttypes  # [win and py27]
+    - setuptools >=42
+    - setuptools_scm >=3.4
+    - toml
+    - wheel
   run:
     - python
 
 test:
   imports:
     - ujson
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/ultrajson/ultrajson
   summary: Ultra fast JSON decoder and encoder written in C with Python bindings
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE.txt
-
+  doc_url: https://github.com/ultrajson/ultrajson/blob/main/README.md
   dev_url: https://github.com/ultrajson/ultrajson
 
 extra:
