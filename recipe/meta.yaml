@@ -46,7 +46,6 @@ about:
   license_file: LICENSE.txt
   doc_url: https://github.com/ultrajson/ultrajson/blob/main/README.md
   dev_url: https://github.com/ultrajson/ultrajson
-  doc_url: https://github.com/ultrajson/ultrajson/blob/main/README.md
 
 extra:
   recipe-maintainers:
