@@ -15,6 +15,7 @@ build:
   number: 0
   skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<36]
 
 requirements:
   build:
@@ -46,6 +47,7 @@ about:
   license_file: LICENSE.txt
   doc_url: https://github.com/ultrajson/ultrajson/blob/main/README.md
   dev_url: https://github.com/ultrajson/ultrajson
+  doc_url: https://github.com/ultrajson/ultrajson/blob/main/README.md
 
 extra:
   recipe-maintainers:
