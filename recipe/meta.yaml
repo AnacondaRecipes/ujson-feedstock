@@ -1,6 +1,6 @@
 {% set name = "ujson" %}
-{% set version = "4.2.0" %}
-{% set sha256 = "fffe509f556861c7343c6cba57ed05fe7bcf4b48a934a5b946ccb45428cf8883" %}
+{% set version = "5.1.0" %}
+{% set sha256 = "a88944d2f99db71a3ca0c63d81f37e55b660edde0b07216fb65a3e46403ef004" %}
 
 package:
   name: {{ name|lower }}
@@ -13,8 +13,8 @@ source:
 
 build:
   number: 0
+  skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv
-  skip: true  # [py<36]
 
 requirements:
   build:
@@ -24,10 +24,9 @@ requirements:
     - python
     - pip
     - setuptools >=42
-    - wheel
-    - setuptools_scm
-      # our latest supported version of toml is 0.10.2
+    - setuptools_scm >=3.4
     - toml
+    - wheel
   run:
     - python
 
@@ -43,10 +42,10 @@ about:
   home: https://github.com/ultrajson/ultrajson
   summary: Ultra fast JSON decoder and encoder written in C with Python bindings
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE.txt
-
-  dev_url: https://github.com/ultrajson/ultrajson
   doc_url: https://github.com/ultrajson/ultrajson/blob/main/README.md
+  dev_url: https://github.com/ultrajson/ultrajson
 
 extra:
   recipe-maintainers:
