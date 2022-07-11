@@ -1,6 +1,6 @@
 {% set name = "ujson" %}
-{% set version = "5.1.0" %}
-{% set sha256 = "a88944d2f99db71a3ca0c63d81f37e55b660edde0b07216fb65a3e46403ef004" %}
+{% set version = "5.4.0" %}
+{% set sha256 = "6b953e09441e307504130755e5bd6b15850178d591f66292bba4608c4f7f9b00" %}
 
 package:
   name: {{ name|lower }}
