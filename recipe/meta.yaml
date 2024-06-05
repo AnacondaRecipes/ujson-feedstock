@@ -1,20 +1,18 @@
 {% set name = "ujson" %}
-{% set version = "5.4.0" %}
-{% set sha256 = "6b953e09441e307504130755e5bd6b15850178d591f66292bba4608c4f7f9b00" %}
+{% set version = "5.10.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: b3cd8f3c5d8c7738257f1018880444f7b7d9b66232c64649f562d7ba86ad4bc1
 
 build:
   number: 0
-  skip: true  # [py<37]
-  script: {{ PYTHON }} -m pip install . -vv
+  skip: true  # [py<38]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   build:
@@ -33,14 +31,23 @@ requirements:
 test:
   imports:
     - ujson
+  source_files:
+    - tests
   requires:
     - pip
+    - pytest
   commands:
     - pip check
+    - pytest -v
+  # downstreams:
+  #   - anaconda-navigator 2.5.2
+  #   - navigator-updater 0.4.0
+  #   - python-lsp-server 1.10.0
 
 about:
   home: https://github.com/ultrajson/ultrajson
   summary: Ultra fast JSON decoder and encoder written in C with Python bindings
+  description: Ultra fast JSON decoder and encoder written in C with Python bindings
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
