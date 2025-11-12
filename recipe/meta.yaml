@@ -1,21 +1,22 @@
 {% set name = "ujson" %}
-{% set version = "5.10.0" %}
+{% set version = "5.11.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b3cd8f3c5d8c7738257f1018880444f7b7d9b66232c64649f562d7ba86ad4bc1
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: e204ae6f909f099ba6b6b942131cee359ddda2b6e4ea39c12eb8b991fe2010e0
 
 build:
-  number: 1
-  skip: true  # [py<38]
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
+  skip: true  # [py<39]
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
@@ -39,10 +40,10 @@ test:
   commands:
     - pip check
     - pytest -v
-  # downstreams:
-  #   - anaconda-navigator 2.5.2
-  #   - navigator-updater 0.4.0
-  #   - python-lsp-server 1.10.0
+  #downstreams:
+  #  - anaconda-navigator 2.7.0
+  #  - navigator-updater 0.6.0
+  #  - python-lsp-server 1.13.1
 
 about:
   home: https://github.com/ultrajson/ultrajson
