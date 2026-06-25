@@ -1,5 +1,5 @@
 {% set name = "ujson" %}
-{% set version = "5.11.0" %}
+{% set version = "5.13.0" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e204ae6f909f099ba6b6b942131cee359ddda2b6e4ea39c12eb8b991fe2010e0
+  sha256: d62e3d7625384c08082abad81a077af587fdef2761bb14c3822f4234b8d07d75
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
-  skip: true  # [py<39]
+  skip: true  # [py<310]
 
 requirements:
   build:
@@ -22,10 +22,8 @@ requirements:
   host:
     - python
     - pip
-    - setuptools >=42
+    - setuptools >=77
     - setuptools_scm >=3.4
-    - toml
-    - wheel
   run:
     - python
 
